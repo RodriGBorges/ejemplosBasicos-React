@@ -14,5 +14,10 @@ export const routesPublic =  [
     {
       path: "/*",
       element: <Error404 />,
+    },
+    /* Prácticas */
+    {
+      path: "/showHideMessagePractica",
+      element: <ShowHideMessage />,
     }
   ]

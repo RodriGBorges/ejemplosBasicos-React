@@ -4,7 +4,9 @@ import { useShow } from "../../hook/useShow";
 
 export const ShowHideMessage = () => {
 
-    const {handleShowMessage, show} = useShow(false)
+    /* hook */
+    const {handleShowMessage, show} = useShow(false);
+
 
     return (
         <Container>
@@ -21,7 +23,7 @@ export const ShowHideMessage = () => {
                         alt=""
                         />
                         <strong className="me-auto">ReactJS</strong>
-                        <small>11 mins ago</small>
+                        <small>Hace 11 minutos</small>
                     </Toast.Header>
                     <Toast.Body>Primer clase!!</Toast.Body>
                 </Toast>

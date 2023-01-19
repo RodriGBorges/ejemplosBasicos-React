@@ -30,9 +30,16 @@ export const Header = () => {
                 Task Manager
               </NavDropdown.Item>
             </NavDropdown>
+
+            {/* PRACTICAS */}
+
             <NavDropdown title="Mis practicas" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/">
                 Counter
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/showHideMessagePractica">
+                Mostrar / ocultar mensaje
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/">
