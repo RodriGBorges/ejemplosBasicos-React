@@ -1,5 +1,6 @@
 import { Error404 } from '../components/Error404'
 import { Home } from '../components/Home'
+import { ProgressBar } from '../components/ProgressBar'
 import { ShowHideMessage } from '../components/ShowHideMessage'
 
 export const routesPublic =  [
@@ -10,6 +11,10 @@ export const routesPublic =  [
     {
       path: "/showHideMessage",
       element: <ShowHideMessage />,
+    },
+    {
+      path: "/progressBar",
+      element: <ProgressBar />,
     },
     {
       path: "/*",
