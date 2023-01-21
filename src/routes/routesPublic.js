@@ -1,7 +1,9 @@
-import { Error404 } from '../components/Error404'
-import { Home } from '../components/Home'
-import { ProgressBar } from '../components/ProgressBar'
-import { ShowHideMessage } from '../components/ShowHideMessage'
+import { Error404 } from '../components/Error404';
+import { Home } from '../components/Home';
+import { ProgressBar } from '../components/ProgressBar';
+import { ShowHideMessage } from '../components/ShowHideMessage';
+import { ShowHideMessagePractica } from '../components/myPractices/ShowHideMessage2';
+import { ProgressBarPractica } from '../components/myPractices/ProgressBar2';
 
 export const routesPublic =  [
     {
@@ -22,7 +24,11 @@ export const routesPublic =  [
     },
     /* Prácticas */
     {
-      path: "/showHideMessagePractica",
-      element: <ShowHideMessage />,
-    }
+      path: "/myPractices/showHideMessage2",
+      element: <ShowHideMessagePractica />,
+    },
+    {
+      path: "/myPractices/progressBar2",
+      element: <ProgressBarPractica />,
+    },
   ]

@@ -38,8 +38,12 @@ export const Header = () => {
                 Counter
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/showHideMessagePractica">
+              <NavDropdown.Item as={Link} to="/myPractices/showHideMessage2">
                 Mostrar / ocultar mensaje
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/myPractices/progressBar2">
+                Barra de progreso
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/">
