@@ -4,6 +4,7 @@ import { ProgressBar } from '../components/ProgressBar';
 import { ShowHideMessage } from '../components/ShowHideMessage';
 import { ShowHideMessagePractica } from '../components/myPractices/ShowHideMessage2';
 import { ProgressBarPractica } from '../components/myPractices/ProgressBar2';
+import { StopwatchTimer } from '../components/StopwatchTimer';
 
 export const routesPublic =  [
     {
@@ -17,6 +18,10 @@ export const routesPublic =  [
     {
       path: "/progressBar",
       element: <ProgressBar />,
+    },
+    {
+      path: "/stopwatchTimer",
+      element: <StopwatchTimer />,
     },
     {
       path: "/*",
