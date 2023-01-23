@@ -5,6 +5,7 @@ import { ShowHideMessage } from '../components/ShowHideMessage';
 import { ShowHideMessagePractica } from '../components/myPractices/ShowHideMessage2';
 import { ProgressBarPractica } from '../components/myPractices/ProgressBar2';
 import { StopwatchTimer } from '../components/StopwatchTimer';
+import { TaskManager } from '../components/TaskManager';
 
 export const routesPublic =  [
     {
@@ -22,6 +23,10 @@ export const routesPublic =  [
     {
       path: "/stopwatchTimer",
       element: <StopwatchTimer />,
+    },
+    {
+      path: "/taskManager",
+      element: <TaskManager />,
     },
     {
       path: "/*",
