@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Image } from 'react-bootstrap';
+import classes from './style.module.css';
 
 export const FormTask = ({ onChange, inputsValues, onSubmit, refForm, action }) => {
     return (
@@ -10,6 +10,9 @@ export const FormTask = ({ onChange, inputsValues, onSubmit, refForm, action }) 
             </Form.Group>
 
             <Form.Group className="mb-3">
+
+                <Image className={classes.imgPreview} alt={inputsValues.title} fluid src={inputsValues.img} />
+
                 <Form.Label>Imagen</Form.Label>
                 <Form.Control placeholder="Ingresar un url" value={inputsValues.img} onChange={onChange} name="img" />
             </Form.Group>
@@ -23,7 +26,7 @@ export const FormTask = ({ onChange, inputsValues, onSubmit, refForm, action }) 
                 {action === "CREATE" ? "Crear" : "Actualizar"}
             </Button>
             <Button variant="danger" type="reset">
-                Reiniciar
+                {action === "CREATE" ? "Reiniciar" : "Cancelar"}
             </Button>
         </Form>
     )
