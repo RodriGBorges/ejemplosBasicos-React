@@ -42,6 +42,36 @@ const taskReducer = (state, action) => { // state = representa el array con toda
             const restTask = state.filter(task => task.id !== idTaskToDelete)
 
             return restTask;
+        
+        case "TOGGLE_ACTIVE":
+            const idTaskToActive = action.payload;
+            const tasksUpdatedActive = state.map((task) => {
+                if(task.id === idTaskToActive) {
+                    return {
+                        ...task,
+                        active: !task.active,
+                        completed: task.completed ? false : task.completed
+                    }
+                }
+                return task
+            })
+
+            return tasksUpdatedActive;
+
+        case "TOGGLE_COMPLETE":
+            const idTaskToCompleted = action.payload;
+            const tasksUpdatedCompleted = state.map((task) => {
+                if(task.id === idTaskToCompleted) {
+                    return {
+                        ...task,
+                        completed: !task.completed,
+                        active: task.active ? false : task.active
+                    }
+                }
+                return task
+            })
+
+            return tasksUpdatedCompleted;
     
         default:
             return state;
@@ -94,6 +124,14 @@ export const TaskManager = () => {
         dispatch({type: "DELETE", payload: id}); //se envía solo el ID
     }
 
+    const handleTaskActive = (id) => {
+        dispatch({type: "TOGGLE_ACTIVE", payload: id}); //se envía solo el ID
+    }
+
+    const handleTaskCompleted = (id) => {
+        dispatch({type: "TOGGLE_COMPLETE", payload: id}); //se envía solo el ID
+    }
+
     return (
         <Container className="mt-5">
             <Row>
@@ -104,7 +142,7 @@ export const TaskManager = () => {
                     {
                         tasks.map((task) => {
                             return ( 
-                            <CardItem key={task.id} task={task} onUpdate={handleUpdate} onDelete={handleDelete} />
+                            <CardItem key={task.id} task={task} onUpdate={handleUpdate} onDelete={handleDelete} onActive={handleTaskActive} onCompleted={handleTaskCompleted} />
                             );
                         })
                     }
