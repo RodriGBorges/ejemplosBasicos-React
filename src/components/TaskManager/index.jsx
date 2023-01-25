@@ -7,8 +7,6 @@ import { FormTask } from "./Form";
 
 const generateId = () => Math.random().toString(36).substring(2, 18);
 
-console.log(generateId());
-
 const taskReducer = (state, action) => { // state = representa el array con todas las tareas
     
     switch (action.type) {
@@ -23,11 +21,10 @@ const taskReducer = (state, action) => { // state = representa el array con toda
                 date: new Date().toLocaleString()
             };
 
-            console.log("Acción Agregar", newTask);
             return [...state, newTask];
         
         case "UPDATE":
-            const taskToUpdate = action.payload
+            const taskToUpdate = action.payload;
             const tasksUpdated = state.map((task) => {
                 if(task.id === taskToUpdate.id) {
                     return {
@@ -38,6 +35,13 @@ const taskReducer = (state, action) => { // state = representa el array con toda
                 return task;
             });
             return tasksUpdated;
+
+        case "DELETE":
+            const idTaskToDelete = action.payload;
+            console.log(idTaskToDelete);
+            const restTask = state.filter(task => task.id !== idTaskToDelete)
+
+            return restTask;
     
         default:
             return state;
@@ -79,12 +83,15 @@ export const TaskManager = () => {
     }
 
     const handleUpdate = (id) => {
-        console.log('Actualizar la tarea ID: ' + id);
 
         const taskFound = tasks.find(task => task.id === id);
         setAction("UPDATE");
 
         setInputsValues(taskFound);
+    }
+
+    const handleDelete = (id) => {
+        dispatch({type: "DELETE", payload: id}); //se envía solo el ID
     }
 
     return (
@@ -95,8 +102,10 @@ export const TaskManager = () => {
                 </Col>
                 <Col sm={12} lg={9}>
                     {
-                        tasks.map(task => {
-                            return <CardItem key={task.id} task={task} onUpdate={handleUpdate} />
+                        tasks.map((task) => {
+                            return ( 
+                            <CardItem key={task.id} task={task} onUpdate={handleUpdate} onDelete={handleDelete} />
+                            );
                         })
                     }
                 </Col>

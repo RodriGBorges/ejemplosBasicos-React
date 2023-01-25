@@ -1,9 +1,9 @@
 import { Button, Form, Image, Toast } from "react-bootstrap";
 import classes from './style.module.css'
 
-export const CardItem = ({ task, onUpdate }) => {
+export const CardItem = ({ task, onUpdate, onDelete }) => {
     return (
-        <Toast>
+        <Toast onClose={() => onDelete(task.id)}>
             <Toast.Header>
                 <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
                 <strong className="me-auto">{task.title}</strong>
