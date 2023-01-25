@@ -7,7 +7,7 @@ export const CardItem = ({ task, onUpdate }) => {
             <Toast.Header>
                 <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
                 <strong className="me-auto">{task.title}</strong>
-                <small>11 mins ago</small>
+                <small>{task.date}</small>
             </Toast.Header>
 
             <Toast.Body>

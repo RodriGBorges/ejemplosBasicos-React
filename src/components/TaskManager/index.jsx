@@ -14,11 +14,13 @@ const taskReducer = (state, action) => { // state = representa el array con toda
     switch (action.type) {
         case "ADD":
 
+            const inputsValues = action.payload;
             const newTask = {
-                ...action.payload,
+                ...inputsValues,
                 id: generateId(),
                 active: false,
-                completed: false
+                completed: false,
+                date: new Date().toLocaleString()
             };
 
             console.log("Acción Agregar", newTask);
@@ -45,8 +47,18 @@ const taskReducer = (state, action) => { // state = representa el array con toda
 
 export const TaskManager = () => {
 
+    const formTaskInitialState = {
+        id: "",
+        title: "",
+        description: "",
+        img: "",
+        active: false,
+        completed: false,
+        date: ""
+    };
+
     const refForm = useRef(null);
-    const [inputsValues, setInputsValues, handleChangeInputsValue, reset] = useForm({}, refForm);
+    const [inputsValues, setInputsValues, handleChangeInputsValue, reset] = useForm(formTaskInitialState, refForm);
 
     const [action, setAction] = useState("CREATE"); //Acción del submit para usar el mismo formulario para actualizar o editar
 
@@ -62,6 +74,8 @@ export const TaskManager = () => {
             dispatch({type:"UPDATE", payload: inputsValues});
         }
         reset();
+
+        setAction("CREATE"); //Solucion bug => después de editar una tarea el boton se queda en actualizar
     }
 
     const handleUpdate = (id) => {

@@ -17,7 +17,7 @@ export const FormTask = ({ onChange, inputsValues, onSubmit, refForm, action }) 
             <Form.Group className="mb-3">
                 <Form.Label>Descripción</Form.Label>
                 {/* as={'textarea'} para cambiar de tipo text a text-area */}
-                <Form.Control as={'textarea'} placeholder="Ingresar un descripción" onChange={onChange} name="description" value={inputsValues.description} />
+                <Form.Control as={'textarea'} placeholder="Ingresar un descripción" onChange={onChange} name="description" defaultValue={inputsValues.description} />
             </Form.Group>
             <Button variant="success" type="submit" className="mx-2" >
                 {action === "CREATE" ? "Crear" : "Actualizar"}
