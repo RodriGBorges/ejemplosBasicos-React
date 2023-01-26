@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "../../hook/useForm";
 import { CardItem } from "./CardItem";
 import { FormTask } from "./Form";
+import { TaskFilter } from "./TaskFilter";
 
 
 const generateId = () => Math.random().toString(36).substring(2, 18);
@@ -135,10 +136,13 @@ export const TaskManager = () => {
     return (
         <Container className="mt-5">
             <Row>
+                <Col sm={12} lg={{span:6, offset: 5}} className="mb-4">
+                    <TaskFilter />
+                </Col>
                 <Col sm={12} lg={3}>
                     <FormTask onChange={handleChangeInputsValue} inputsValues={inputsValues} onSubmit={handleSubmit} refForm={refForm} action={action} />
                 </Col>
-                <Col sm={12} lg={9}>
+                <Col sm={12} lg={9} className="d-flex flex-wrap align-items-start gap-2">
                     {
                         tasks.map((task) => {
                             return ( 

@@ -3,7 +3,7 @@ import classes from './style.module.css'
 
 export const CardItem = ({ task, onUpdate, onDelete, onActive, onCompleted }) => {
     return (
-        <Toast onClose={() => onDelete(task.id)} bg={task.active ? "success" : null}>
+        <Toast onClose={() => onDelete(task.id)} bg={task.active ? "success" : null} className={classes.toast}>
             <Toast.Header>
                 <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
                 <strong className="me-auto">{task.title}</strong>

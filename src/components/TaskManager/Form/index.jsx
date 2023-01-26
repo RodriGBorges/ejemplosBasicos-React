@@ -11,7 +11,7 @@ export const FormTask = ({ onChange, inputsValues, onSubmit, refForm, action }) 
 
             <Form.Group className="mb-3">
 
-                <Image className={classes.imgPreview} alt={inputsValues.title} fluid src={inputsValues.img} />
+                <Image className={classes.imgPreview} fluid src={inputsValues.img} />
 
                 <Form.Label>Imagen</Form.Label>
                 <Form.Control placeholder="Ingresar un url" value={inputsValues.img} onChange={onChange} name="img" />
