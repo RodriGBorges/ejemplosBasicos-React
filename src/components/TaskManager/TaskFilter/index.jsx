@@ -1,12 +1,13 @@
 import { Button, ButtonGroup } from "react-bootstrap";
+import { filterTask } from "../../../constants";
 
-export const TaskFilter = () => {
+export const TaskFilter = ({ onChangeFilter }) => {
     return (
         <ButtonGroup>
-            <Button variant="outline-secondary">Todos</Button>
-            <Button variant="outline-secondary">En proceso</Button>
-            <Button variant="outline-secondary">Pendiente</Button>
-            <Button variant="outline-secondary">Completado</Button>
+            <Button variant="outline-secondary" onClick={() => onChangeFilter(filterTask.ALL)} >Todos</Button>
+            <Button variant="outline-secondary" onClick={() => onChangeFilter(filterTask.IN_PROCESS)} >En proceso</Button>
+            <Button variant="outline-secondary" onClick={() => onChangeFilter(filterTask.PENDING)} >Pendiente</Button>
+            <Button variant="outline-secondary" onClick={() => onChangeFilter(filterTask.COMPLETED)} >Completado</Button>
         </ButtonGroup>
     );
 };
