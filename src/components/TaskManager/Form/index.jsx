@@ -1,7 +1,7 @@
 import { Button, Form, Image } from 'react-bootstrap';
 import classes from './style.module.css';
 
-export const FormTask = ({ onChange, inputsValues, onSubmit, refForm, action }) => {
+export const FormTask = ({ onChange, inputsValues, onSubmit, refForm, action, onReset }) => {
     return (
         <Form onSubmit={onSubmit} ref={refForm}>
             <Form.Group className="mb-3">
@@ -25,7 +25,7 @@ export const FormTask = ({ onChange, inputsValues, onSubmit, refForm, action }) 
             <Button variant="success" type="submit" className="mx-2" >
                 {action === "CREATE" ? "Crear" : "Actualizar"}
             </Button>
-            <Button variant="danger" type="reset">
+            <Button variant="danger" type="reset" onClick={onReset}>
                 {action === "CREATE" ? "Reiniciar" : "Cancelar"}
             </Button>
         </Form>

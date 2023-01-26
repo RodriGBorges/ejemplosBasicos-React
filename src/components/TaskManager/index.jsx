@@ -74,6 +74,23 @@ export const TaskManager = () => {
         setStatusFilter(status);
     };
 
+    const filterTaskMethod = (task) => {
+        switch (statusFilter) {
+            case filterTask.IN_PROCESS:
+                return task.active === true;
+            case filterTask.PENDING:
+                return task.active === false && task.completed === false;
+            case filterTask.COMPLETED:
+                return task.completed === true;
+            default:
+                return task;
+        }
+    }; //filtro en una variable aparte
+
+    const handleReset = () => {
+        reset();
+    };
+
     return (
         <Container className="mt-5">
             <Row>
@@ -81,22 +98,11 @@ export const TaskManager = () => {
                     <TaskFilter onChangeFilter= {handleStatusFilter} />
                 </Col>
                 <Col sm={12} lg={3}>
-                    <FormTask onChange={handleChangeInputsValue} inputsValues={inputsValues} onSubmit={handleSubmit} refForm={refForm} action={action} />
+                    <FormTask onChange={handleChangeInputsValue} inputsValues={inputsValues} onSubmit={handleSubmit} refForm={refForm} action={action} onReset={handleReset} />
                 </Col>
                 <Col sm={12} lg={9} className="d-flex flex-wrap align-items-start gap-2">
                     {
-                        tasks.filter(task => {
-                            switch (statusFilter) {
-                                case filterTask.IN_PROCESS:
-                                    return task.active === true;
-                                case filterTask.PENDING:
-                                    return task.active === false;
-                                case filterTask.COMPLETED:
-                                    return task.completed === true;
-                                default:
-                                    return task;
-                            }
-                        }).map((task) => {
+                        tasks.filter(filterTaskMethod).map((task) => {
                             return ( 
                             <CardItem key={task.id} task={task} onUpdate={handleUpdate} onDelete={handleDelete} onActive={handleTaskActive} onCompleted={handleTaskCompleted} />
                             );
